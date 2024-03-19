@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "lightgallery": "^2.7.2",
     "luxy.js": "^0.1.0",
     "swiper": "^11.0.7",
     "vue": "^3.4.19"

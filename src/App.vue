@@ -6,7 +6,7 @@ import VideoList from './components/Videos.vue';
 
 <template>
   <div>
-    <Header></Header>
+    <Header id="navbar" :style="{ top: navbarTop }"></Header>
     <div class="section0">
       <div class="container">
         <div class="hero-wrapper" id="mainsection">
@@ -29,7 +29,7 @@ import VideoList from './components/Videos.vue';
         <p>A "Superbowl" season for Indonesian television, Marjan for Ramadan 2022. We did CGI for the whole episode (3 episodes in total) by replacing the environment, the main character weapon, building, Wereng craft, etc. This commercial was composed by Seto Harianto</p>
       </div>
       <!-- <div class="luxy-el" data-speed-y="5" data-offset="-50"> -->
-        <video autoplay no-controls muted playsinline loop src="https://video.wixstatic.com/video/bb3d40_d9991d8da4004f029810e228fa9029ea/1080p/mp4/file.mp4" style="height: 100%; width: 100%; object-fit: cover; object-position: center center; opacity: 1;"></video>
+        <video autoplay no-controls muted playsinline loop src="/src/assets/Unreal/MoverseReporter.mp4" style="height: 100%; width: 100%; object-fit: cover; object-position: center center; opacity: 1;"></video>
       <!-- </div> -->
     </div>
 
@@ -38,7 +38,6 @@ import VideoList from './components/Videos.vue';
       <p>
         As detail-oriented visual effects producers, we have gained valuable experience through a variety of commercials and media projects. Established in 2007, Lite Production has been one of the leading companies based in Jakarta in visual effects CGI. We love to co-work with directors and production houses to help out with visual that is impossible to be done with a conventional technique.
       </p>
-      <button type="button" class="btn btn-light px-5 mt-5">Learn More</button>
     </div>
 
     <div class="bg-fixed text-center" id="breakdown">
@@ -46,7 +45,7 @@ import VideoList from './components/Videos.vue';
         <h2>3D BREAKDOWN</h2>
         <p>Explore LiteVFX's top-tier 3D Breakdowns, setting the standard for TVC visual effects in Indonesia. Dive into a world of innovation and precision as LiteVFX transforms imagination into a captivating reality.</p>
       </div>
-      <video autoplay no-controls muted playsinline loop src="https://video.wixstatic.com/video/bb3d40_b09c6470f9924e7d9179f0be18790ba9/1080p/mp4/file.mp4" style="height: 100%; width: 100%; object-fit: cover; object-position: center center; opacity: 1;"></video>
+      <video autoplay no-controls muted playsinline loop src="/src/assets/Unreal/TabrakMasuk_Moverse.mp4" style="height: 100%; width: 100%; object-fit: cover; object-position: center center; opacity: 1;"></video>
     </div>
 
     <div class="video-lists pb-5" id="works">
@@ -83,10 +82,36 @@ import VideoList from './components/Videos.vue';
 <script>
 import luxy from "luxy.js"
 export default {
-    mounted() {
-      // luxy.init();
+  data() {
+    return {
+      prevScrollpos: window.pageYOffset,
+      navbarTop: '0' // Initial position when the component is mounted
     }
+  },
+  mounted() {
+    window.onscroll = this.handleScroll;
+
+    // luxy.init();
+  },
+  methods: {
+    handleScroll() {
+      const currentScrollPos = window.pageYOffset;
+  
+      if (this.prevScrollpos > currentScrollPos) {
+        this.navbarTop = '0';
+      } else {
+        this.navbarTop = '-150px';
+      }
+  
+      this.prevScrollpos = currentScrollPos;
+    }
+  },
+  beforeDestroy() {
+    // Make sure to remove the scroll event listener when the component is destroyed
+    window.removeEventListener('scroll', this.handleScroll);
   }
+
+}
 </script>
 <style lang="scss">
   @import './assets/style.scss'

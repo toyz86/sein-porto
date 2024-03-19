@@ -64,13 +64,12 @@
     data() {
       return {
         items: [
-          '/src/assets/photo-1437719417032-8595fd9e9dc6.avif',
-          '/src/assets/photo-1470252649378-9c29740c9fa8.avif',
-          '/src/assets/movie.mp4',
-          '/src/assets/photo-1510414842594-a61c69b5ae57.avif',
-          '/src/assets/photo-1437719417032-8595fd9e9dc6.avif',
-          '/src/assets/photo-1470252649378-9c29740c9fa8.avif',
-          '/src/assets/photo-1510414842594-a61c69b5ae57.avif'
+          '/src/assets/Celestial harmony.mp4',
+          '/src/assets/Keyboard.mp4',
+          '/src/assets/Clipan Finance Award/bumper-logo-cfi.mp4',
+          '/src/assets/Ibox/Ibox-logo.mp4',
+          '/src/assets/Magnum Ice/magnum Ice.mp4',
+          '/src/assets/Tiger Beer Soju/Tiger beer Soju.mp4'
         ]
       }
     },

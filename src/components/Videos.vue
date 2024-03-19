@@ -42,44 +42,22 @@
   <div v-if="selectedVideo !== null" class="modal-video" v-show="showModal">
     <div class="container">
       <div class="close" @click="closeModal"></div>
+      <div class="next-prev-buttons">
+        <button @click="prevVideo" :disabled="currentIndex === 0">Prev</button>
+        <button @click="nextVideo" :disabled="currentIndex === items.length - 1">Next</button>
+      </div>
       <div class="row">
-        <!-- <video autoplay playsinline loop muted width="100%" height="100%" onContextMenu="return false;">
-          <source :src="selectedVideo" type="video/mp4">
-        </video> -->
-        <div class="col-12 col-md-8">
-          <iframe height="480" width="500"
-            :src="selectedVideo">
-          </iframe>
+        <div class="col-12 col-md-8 video-overlay">
+          <transition name="slide" @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave" @leave="leave">
+              <video autoplay playsinline loop muted height="480" width="500" @contextmenu.prevent :key="selectedVideo">
+                <source :src="selectedVideo" type="video/mp4">
+              </video>
+            </transition>
         </div>
-        <div class="col-6 col-md-4 video-content">
+        <div class="col-12 col-md-4 video-content">
           <h4>{{ selectedTitleVideo }}</h4>
         </div>
       </div>
-    </div>
-
-    <div class="thumbnail-bottom container-fluid">
-      <swiper
-        :modules="modules"
-        :slides-per-view="8"
-        :space-between="15"
-        navigation
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
-      >
-  
-        <!-- Thumbnail Video -->
-        <swiper-slide v-for="(item, index) in items" :key="index" class="my-5" @click="onPlay(index)">
-          <div class="v-thumbnail h-100">
-            <div class="play-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                <path fill="#ffffff" d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
-              </svg>
-            </div>
-            <img :src="item.thumb" alt="sein video">
-          </div>
-        </swiper-slide>
-  
-      </swiper>
     </div>
   </div>
 
@@ -108,70 +86,86 @@
       return {
         items: [
           {
-            src: 'https://www.youtube.com/embed/il_t1WVLNxk',
+            src: '/src/assets/MMK-Merry Christmas 3.mp4',
             thumb: '/src/assets/audi.jpg',
-            title: `Video 1 | Explore LiteVFX's top-tier 3D Breakdowns, setting the standard for TVC visual effects in Indonesia`
+            title: `MMK-Merry Christmas`
           },
           {
-            src: 'https://www.youtube.com/embed/9HqOXpJryPs?si=F4gt6NASsOy9WP3A',
+            src: '/src/assets/Magnum Ice/magnum Ice.mp4',
+            thumb: '/src/assets/Magnum Ice/magnum Ice_thumbnail.png',
+            title: 'Magnum Ice'
+          },
+          {
+            src: '/src/assets/Clipan Finance Award/BUMPER PIALA CFI.mp4',
+            thumb: '/src/assets/Clipan Finance Award/CFI-Plakat.png',
+            title: 'BUMPER PIALA CFI'
+          },
+          {
+            src: '/src/assets/Gojek/Inflate Animation - Gojek.mp4',
+            thumb: '/src/assets/Gojek/Inflate Animation - Gojek0054.png',
+            title: `Inflate Animation - Gojek`
+          },
+          {
+            src: '/src/assets/Cream/Cream.mp4',
+            thumb: '/src/assets/Cream/cream.png',
+            title: 'Cream'
+          },
+          {
+            src: '/src/assets/Ibox/Ibox-iphone.mp4',
             thumb: '/src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
-            title: 'Video 2 | Ngewe sama tante'
+            title: 'Ibox iphone'
           },
           {
-            src: 'https://www.youtube.com/embed/E0Tf0fb2tD0?si=PTUr5vUT-huhylTF',
+            src: '/src/assets/Ibox/Ibox-logo.mp4',
+            thumb: '/src/assets/Ibox/Ibox-iphone.png',
+            title: `Ibox logo Animation`
+          },
+          {
+            src: '/src/assets/Marjan/Marjan.mp4',
+            thumb: '/src/assets/Marjan/Preview/marjan-4.png',
+            title: 'Marjan Animation'
+          },
+          {
+            src: '/src/assets/Tiger Beer Soju/Tiger Soju Launch.mp4',
+            thumb: '/src/assets/Tiger Beer Soju/workbench.png',
+            title: 'Tiger Beer Soju Animation'
+          },
+          {
+            src: '/src/assets/Tiger Beer Soju/TigerSoju-Sequnce-1.mp4',
+            thumb: '/src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
+            title: ` Tiger Beer Soju Animation`
+          },
+          {
+            src: '/src/assets/Tiger Beer Soju/Tiger Soju-bottle.mp4',
             thumb: '/src/assets/audi.jpg',
-            title: 'Video 3 | Tante Cantik Berbagi Silit'
+            title: ' Tiger Beer Soju Animation'
           },
           {
-            src: 'https://www.youtube.com/embed/il_t1WVLNxk',
-            thumb: '/src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
-            title: `Video 4 | Explore LiteVFX's top-tier 3D Breakdowns`
+            src: '/src/assets/Unreal/MoverseReporter.mp4',
+            thumb: '/src/assets/Unreal/Reporter.jpg',
+            title: ' Moverse Reporter'
           },
           {
-            src: 'https://www.youtube.com/embed/il_t1WVLNxk',
-            thumb: '/src/assets/audi.jpg',
-            title: 'Video 5 | setting the standard for TVC visual effects in Indonesia'
+            src: '/src/assets/Unreal/TabrakMasuk_Moverse.mp4',
+            thumb: '/src/assets/Unreal/TabrakMasuk.jpg',
+            title: ' Moverse Jokowi'
           },
           {
-            src: 'https://www.youtube.com/embed/il_t1WVLNxk',
-            thumb: '/src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
-            title: 'Video 6 | Main sama Bu Boss'
+            src: '/src/assets/Celestial harmony.mp4',
+            thumb: '/src/assets/Celestical-Harmony.png',
+            title: ' Celestical Harmony'
           },
           {
-            src: 'https://www.youtube.com/embed/il_t1WVLNxk',
-            thumb: '/src/assets/audi.jpg',
-            title: `Video 7 | Explore LiteVFX's top-tier 3D Breakdowns, setting the standard for TVC visual effects in Indonesia`
-          },
-          {
-            src: 'https://www.youtube.com/embed/il_t1WVLNxk',
-            thumb: '/src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
-            title: 'Video 8 | Ngewe sama tante'
-          },
-          {
-            src: 'https://www.youtube.com/embed/il_t1WVLNxk',
-            thumb: '/src/assets/audi.jpg',
-            title: 'Video 9 | Tante Cantik Berbagi Silit'
-          },
-          {
-            src: 'https://www.youtube.com/embed/il_t1WVLNxk',
-            thumb: '/src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
-            title: `Video 10 | Explore LiteVFX's top-tier 3D Breakdowns`
-          },
-          {
-            src: 'https://www.youtube.com/embed/il_t1WVLNxk',
-            thumb: '/src/assets/audi.jpg',
-            title: 'Video 11 | setting the standard for TVC visual effects in Indonesia'
-          },
-          {
-            src: 'https://www.youtube.com/embed/il_t1WVLNxk',
-            thumb: '/src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
-            title: 'Video 12 | Main sama Bu Boss'
+            src: '/src/assets/Fluid Bubble.mp4',
+            thumb: '/src/assets/Fliud-Bubble.png',
+            title: ' Fluid Bubble'
           },
 
         ],
         selectedVideo: null,
-        selectedVideoTitle: null,
+        selectedTitleVideo: null,
         showModal: false,
+        currentIndex: null, 
       }
     },
     setup() {
@@ -188,15 +182,54 @@
       };
     },
     methods: {
+      beforeEnter(el) {
+        el.style.transform = 'translateX(100%)'; 
+      },
+      enter(el, done) {
+        setTimeout(() => {
+          el.style.transition = 'transform 0.5s ease';
+          el.style.transform = 'translateX(0)'; 
+          done();
+        }, 50); 
+      },
+      beforeLeave(el) {
+        el.style.transition = 'transform 0.5s ease';
+        el.style.transform = 'translateX(-100%)'; 
+      },
+      leave(el, done) {
+        setTimeout(() => {
+          done();
+        }, 500);
+      },
+
       onPlay(index) {
         // Set the selected video when the play icon is clicked
         this.selectedVideo = this.items[index].src;
         this.selectedTitleVideo = this.items[index].title;
+        this.currentIndex = index;
         this.showModal = true;
       },
       closeModal() {
         // Close the modal
         this.showModal = false;
+        this.selectedVideo = null;
+        this.currentIndex = null;
+      },
+      nextVideo() {
+        // Display the next video in the modal
+        if (this.currentIndex < this.items.length - 1) {
+          this.currentIndex++;
+          this.selectedVideo = this.items[this.currentIndex].src;
+          this.selectedTitleVideo = this.items[this.currentIndex].title;
+        }
+      },
+      prevVideo() {
+        // Display the previous video in the modal
+        if (this.currentIndex > 0) {
+          this.currentIndex--;
+          this.selectedVideo = this.items[this.currentIndex].src;
+          this.selectedTitleVideo = this.items[this.currentIndex].title;
+        }
       },
     }
   };

@@ -9,7 +9,7 @@ $color_1: #fff;
 }
 /* BEGIN MENU HEADER */
 header {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -17,6 +17,8 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition: all 0.3s linear;
+	z-index: 9999;
 
 	.nav-mb {
 		position: relative;
@@ -34,6 +36,21 @@ header {
 			height: 1px;
 			background-color: #fff;
 			margin-top: 10px;
+		}
+	}
+
+	&#navbar {
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			background: rgba(0, 0, 0, 0.3);
+			z-index: -1;
 		}
 	}
 }
@@ -198,7 +215,7 @@ video {
 
 .video-lists {
 	.swiper-slide {
-		height: 100% !important;
+		height: 250px !important;
 	}
 }
 
@@ -215,6 +232,10 @@ video {
 	// align-items: center;
 	background-color: rgba(0, 0, 0, 0.8);
 	transition: all 0.3s ease;
+
+	@media only screen and (max-width: 600px) {
+		padding-top: 80px;
+	}
 
 	&:before {
 		content: "";
@@ -405,4 +426,12 @@ video {
 .translateX-leave-to{
 	transform: translateY(50px) rotate(2deg);
 	opacity: 0;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: transform 0.5s ease; /* Atur durasi dan fungsi waktu transisi */
+}
+
+.slide-enter, .slide-leave-to {
+  transform: translateX(100%); /* Geser ke kanan saat masuk, atau ke kiri saat keluar */
 }
