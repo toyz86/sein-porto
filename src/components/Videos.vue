@@ -43,18 +43,22 @@
     <div class="container">
       <div class="close" @click="closeModal"></div>
       <div class="next-prev-buttons">
-        <button @click="prevVideo" :disabled="currentIndex === 0">Prev</button>
-        <button @click="nextVideo" :disabled="currentIndex === items.length - 1">Next</button>
+        <button @click="prevVideo" :disabled="currentIndex === 0" class="btn-prev">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+        </button>
+        <button @click="nextVideo" :disabled="currentIndex === items.length - 1" class="btn-next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+        </button>
       </div>
       <div class="row">
-        <div class="col-12 col-md-8 video-overlay">
+        <div class="video-overlay">
           <transition name="slide" @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave" @leave="leave">
-              <video autoplay playsinline loop muted height="480" width="500" @contextmenu.prevent :key="selectedVideo">
-                <source :src="selectedVideo" type="video/mp4">
-              </video>
-            </transition>
+            <video autoplay playsinline loop muted @contextmenu.prevent :key="selectedVideo">
+              <source :src="selectedVideo" type="video/mp4">
+            </video>
+          </transition>
         </div>
-        <div class="col-12 col-md-4 video-content">
+        <div class="video-content">
           <h4>{{ selectedTitleVideo }}</h4>
         </div>
       </div>
@@ -86,78 +90,78 @@
       return {
         items: [
           {
-            src: '/src/assets/MMK-Merry Christmas 3.mp4',
-            thumb: '/src/assets/audi.jpg',
+            src: 'src/assets/MMK-Merry Christmas 3.mp4',
+            thumb: 'src/assets/audi.jpg',
             title: `MMK-Merry Christmas`
           },
           {
-            src: '/src/assets/Magnum Ice/magnum Ice.mp4',
-            thumb: '/src/assets/Magnum Ice/magnum Ice_thumbnail.png',
+            src: 'src/assets/Magnum Ice/magnum Ice.mp4',
+            thumb: 'src/assets/Magnum Ice/magnum Ice_thumbnail.png',
             title: 'Magnum Ice'
           },
           {
-            src: '/src/assets/Clipan Finance Award/BUMPER PIALA CFI.mp4',
-            thumb: '/src/assets/Clipan Finance Award/CFI-Plakat.png',
+            src: 'src/assets/Clipan Finance Award/BUMPER PIALA CFI.mp4',
+            thumb: 'src/assets/Clipan Finance Award/CFI-Plakat.png',
             title: 'BUMPER PIALA CFI'
           },
           {
-            src: '/src/assets/Gojek/Inflate Animation - Gojek.mp4',
-            thumb: '/src/assets/Gojek/Inflate Animation - Gojek0054.png',
+            src: 'src/assets/Gojek/Inflate Animation - Gojek.mp4',
+            thumb: 'src/assets/Gojek/Inflate Animation - Gojek0054.png',
             title: `Inflate Animation - Gojek`
           },
           {
-            src: '/src/assets/Cream/Cream.mp4',
-            thumb: '/src/assets/Cream/cream.png',
+            src: 'src/assets/Cream/Cream.mp4',
+            thumb: 'src/assets/Cream/cream.png',
             title: 'Cream'
           },
           {
-            src: '/src/assets/Ibox/Ibox-iphone.mp4',
-            thumb: '/src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
+            src: 'src/assets/Ibox/Ibox-iphone.mp4',
+            thumb: 'src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
             title: 'Ibox iphone'
           },
           {
-            src: '/src/assets/Ibox/Ibox-logo.mp4',
-            thumb: '/src/assets/Ibox/Ibox-iphone.png',
+            src: 'src/assets/Ibox/Ibox-logo.mp4',
+            thumb: 'src/assets/Ibox/Ibox-iphone.png',
             title: `Ibox logo Animation`
           },
           {
-            src: '/src/assets/Marjan/Marjan.mp4',
-            thumb: '/src/assets/Marjan/Preview/marjan-4.png',
+            src: 'src/assets/Marjan/Marjan.mp4',
+            thumb: 'src/assets/Marjan/Preview/marjan-4.png',
             title: 'Marjan Animation'
           },
           {
-            src: '/src/assets/Tiger Beer Soju/Tiger Soju Launch.mp4',
-            thumb: '/src/assets/Tiger Beer Soju/workbench.png',
+            src: 'src/assets/Tiger Beer Soju/Tiger Soju Launch.mp4',
+            thumb: 'src/assets/Tiger Beer Soju/workbench.png',
             title: 'Tiger Beer Soju Animation'
           },
           {
-            src: '/src/assets/Tiger Beer Soju/TigerSoju-Sequnce-1.mp4',
-            thumb: '/src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
+            src: 'src/assets/Tiger Beer Soju/TigerSoju-Sequnce-1.mp4',
+            thumb: 'src/assets/Keyvisual-Alfa-Romeo-Giulia.jpg',
             title: ` Tiger Beer Soju Animation`
           },
           {
-            src: '/src/assets/Tiger Beer Soju/Tiger Soju-bottle.mp4',
-            thumb: '/src/assets/audi.jpg',
+            src: 'src/assets/Tiger Beer Soju/Tiger Soju-bottle.mp4',
+            thumb: 'src/assets/audi.jpg',
             title: ' Tiger Beer Soju Animation'
           },
           {
-            src: '/src/assets/Unreal/MoverseReporter.mp4',
-            thumb: '/src/assets/Unreal/Reporter.jpg',
+            src: 'src/assets/Unreal/MoverseReporter.mp4',
+            thumb: 'src/assets/Unreal/Reporter.jpg',
             title: ' Moverse Reporter'
           },
           {
-            src: '/src/assets/Unreal/TabrakMasuk_Moverse.mp4',
-            thumb: '/src/assets/Unreal/TabrakMasuk.jpg',
+            src: 'src/assets/Unreal/TabrakMasuk_Moverse.mp4',
+            thumb: 'src/assets/Unreal/TabrakMasuk.jpg',
             title: ' Moverse Jokowi'
           },
           {
-            src: '/src/assets/Celestial harmony.mp4',
-            thumb: '/src/assets/Celestical-Harmony.png',
+            src: 'src/assets/Celestial harmony.mp4',
+            thumb: 'src/assets/Celestical-Harmony.png',
             title: ' Celestical Harmony'
           },
           {
-            src: '/src/assets/Fluid Bubble.mp4',
-            thumb: '/src/assets/Fliud-Bubble.png',
+            src: 'src/assets/Fluid Bubble.mp4',
+            thumb: 'src/assets/Fliud-Bubble.png',
             title: ' Fluid Bubble'
           },
 
@@ -183,7 +187,7 @@
     },
     methods: {
       beforeEnter(el) {
-        el.style.transform = 'translateX(100%)'; 
+        el.style.transform = 'translateX(200%)'; 
       },
       enter(el, done) {
         setTimeout(() => {
@@ -194,12 +198,12 @@
       },
       beforeLeave(el) {
         el.style.transition = 'transform 0.5s ease';
-        el.style.transform = 'translateX(-100%)'; 
+        el.style.transform = 'translateX(-200%)'; 
       },
       leave(el, done) {
         setTimeout(() => {
           done();
-        }, 500);
+        }, 100);
       },
 
       onPlay(index) {

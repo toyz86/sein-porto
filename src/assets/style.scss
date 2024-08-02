@@ -435,3 +435,44 @@ video {
 .slide-enter, .slide-leave-to {
   transform: translateX(100%); /* Geser ke kanan saat masuk, atau ke kiri saat keluar */
 }
+
+.video-overlay {
+	max-height: 600px;
+}
+
+button svg {
+	width: 25px;
+}
+
+// .next-prev-buttons {
+// 	position: absolute;
+// 	top: 50%;
+// 	transform: translateY(-50%);
+// 	z-index: 1;
+// }
+
+.btn-prev {
+	position: absolute;
+	left: 5vw;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn-next {
+	position: absolute;
+	right: 5vw;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

@@ -54,7 +54,7 @@ import VideoList from './components/Videos.vue';
 
     <div id="contact" class="container text-center contact">
       <h2 class="mb-5">Contact</h2>
-      <p>emailluapaan@gmial.com</p>
+      <p>saintachirudin1899@gmail.com</p>
       <div class="sosmed-wrapper">
         <div class="d-flex justify-content-center">
           <div class="icon">
@@ -81,6 +81,8 @@ import VideoList from './components/Videos.vue';
 
 <script>
 import luxy from "luxy.js"
+// import gsap from "/src/assets/gsap/gsap.min.js";
+// import SplitText from "/src/assets/gsap/SplitText.min.js";
 export default {
   data() {
     return {
@@ -91,7 +93,27 @@ export default {
   mounted() {
     window.onscroll = this.handleScroll;
 
-    // luxy.init();
+    gsap.registerPlugin(SplitText);
+
+    const tl = gsap.timeline(),
+      mySplitText = new SplitText("#mainsection", { type: "words,chars" }),
+      chars = mySplitText.chars; //an array of all the divs that wrap each character
+
+    gsap.set("#mainsection", { perspective: 400 });
+
+    console.log(chars);
+
+    tl.from(chars, {
+      duration: 0.8,
+      opacity: 0,
+      scale: 0,
+      y: 80,
+      rotationX: 180,
+      transformOrigin: "0% 50% -50",
+      ease: "back",
+      stagger: 0.01
+    });
+
   },
   methods: {
     handleScroll() {
